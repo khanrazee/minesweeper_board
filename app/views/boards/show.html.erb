@@ -1,0 +1,7 @@
+<%= render 'minesweeper_board', minesweeper_board: @board.minesweeper_board, board: @board %>
+
+<div style="width: 100%; text-align: center;">
+  <%= link_to "Recently Created Boards", recent_boards_path, class: "btn btn-success btn-lg", style: "margin-right: 10px;" %>
+  <%= link_to "All boards", boards_path, class: "btn btn-success btn-lg" %>
+  <%= link_to 'Create New Board', new_board_path, class: 'btn btn-success btn-lg mb-2',style: "margin-left: 10px;" %>
+</div>

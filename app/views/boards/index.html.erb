@@ -1,0 +1,13 @@
+<!-- app/views/boards/index.html.erb -->
+<% @boards.each do |board| %>
+  <%= render partial: 'board', locals: { board: board } %>
+<% end %>
+
+<div style="width: 100%; text-align: center;">
+  <%= paginate @boards %>
+</div>
+
+<div style="width: 100%; text-align: center;">
+  <%= link_to "Recently Created Boards", recent_boards_path, class: "btn btn-success btn-lg"%>
+  <%= link_to "Create New Board", new_board_path, class: "btn btn-success btn-lg"%>
+</div>

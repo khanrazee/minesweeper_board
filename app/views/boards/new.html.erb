@@ -1,0 +1,80 @@
+<!-- app/views/boards/new.html.erb -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link href="https://fonts.googleapis.com/css?family=Cardo:700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:400,700" rel="stylesheet">
+
+</head>
+
+<body>
+<div id="booking" class="section">
+  <div class="col-md-12 mb-4 d-flex flex-column align-items-center justify-content-center">
+    <%= link_to "Recently Created Boards", recent_boards_path, class: "btn btn-success btn-lg mb-2 custom-button"%>
+    <%= link_to "All boards", boards_path, class: "btn btn-success btn-lg mb-2 custom-button_1"%>
+
+  </div>
+  <div class="section-center">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="booking-form">
+            <div class="form-header">
+              <h1>Generate Minesweeper Board</h1>
+            </div>
+            <%= form_with(model: @board, url: boards_path, method: :post, html: { onsubmit: 'return validateMines();' }) do |form| %>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <%= form.label :email, class: "form-label" %>
+                    <%= form.text_field :email, class: "form-control", required: true %>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <%= form.label :name, class: "form-label" %>
+                    <%= form.text_field :name, class: "form-control", required: true %>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-3">
+                  <div class="form-group">
+                    <%= form.label :width, class: "form-label" %>
+                    <%= form.number_field :width, class: "form-control", required: true, min: 2 %>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="form-group">
+                    <%= form.label :height, class: "form-label" %>
+                    <%= form.number_field :height, class: "form-control", required: true, min: 2 %>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="form-group">
+                    <%= form.label :mines, class: "form-label" %>
+                    <%= form.number_field :mines, class: "form-control", required: true ,min: 1%>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="form-btn">
+                    <%= form.submit "Generate Board", class: "submit-btn" %>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+
+</html>

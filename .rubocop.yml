@@ -1,0 +1,12 @@
+# .rubocop.yml
+
+AllCops:
+  Exclude:
+    - 'db/**/*'
+    - 'config/**/*'
+    - 'test/**/*'
+    - 'Gemfile'
+    - 'Rakefile'
+    - 'bin/**/*'
+    - 'app/services/*'
+# Add more specific configurations for individual cops if needed

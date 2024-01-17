@@ -1,0 +1,54 @@
+<!-- app/views/your_controller/your_view.html.erb -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Minesweeper Board</title>
+  <%= stylesheet_link_tag 'minesweeper' %>
+</head>
+
+<body>
+<div class="minesweeper-board-container">
+  <h1>Minesweeper Board</h1>
+  <p>
+    <strong>Name:</strong>
+    <%= board.name %>
+  </p>
+
+  <p>
+    <strong>Email:</strong>
+    <%= board.email %>
+  </p>
+
+  <p>
+    <strong>Dimensions:</strong>
+    <%= board.width %> x <%= board.height %>
+  </p>
+
+  <p>
+    <strong>Mines:</strong>
+    <%= board.mines %>
+  </p>
+  <% minesweeper_board = eval(minesweeper_board) %>
+  <div class="minesweeper-board">
+    <% minesweeper_board.each do |row| %>
+      <div class="minesweeper-row">
+        <% row.each do |cell| %>
+          <div class="minesweeper-cell <%= cell == 9 ? 'mine' : (cell == 0 ? 'empty' : "number-#{cell}") %>">
+            <% case cell %>
+            <% when 9 %>
+              💣
+            <% when 0 %>
+              ⬜
+            <% else %>
+              <%= cell %>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>
+</body>
+</html>
